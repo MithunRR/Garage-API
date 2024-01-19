@@ -120,22 +120,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['serv_carID'])) {
         <div class="user_body">
             <div style="display:flex; justify-content:space-between">
                 <h2>Car Details</h2>
-                <div class="serach_serv">
+                <!-- <div class="serach_serv">
                     <form action="" method='post'>
                         <input type="text" name='user_id' placeholder='Enter Car Id'>
                         <button type="submit">Search</button>
                     </form>
-                </div>
+                </div> -->
             </div>
             <div class="users">
             <table>
                 <tr>
                     <th>Car Id </th>
-                    <th>Owner Id </th>
                     <th>Model </th>
-                    <th>Color </th>
                     <th>Purchase Date</th>
                 </tr>
+                <?php
+                if (isset($result['Car'])) {
+                        echo '<tr>';
+                        echo '<td> <b> ' . $result['Car']['id'] . ' </b> </td>';
+                        echo '<td> <b> ' . $result['Car']['model'] . '</b> </td>';
+                        echo '<td> <b> ' . $result['Car']['purchase_date'] . ' </b> </td>';
+                        echo '</tr>';
+                    }
+                ?>
             </table>                
             
             </div>
@@ -150,13 +157,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['serv_carID'])) {
             <div class="show_car">
                 <h2>Servicing Details</h2>
             </div>
-            <?php 
-            if (isset($result['Car'])) {
-                if ($carID) {
-                    echo '<h3 style="color:black; padding-top:5px"> Servicing Records for Car ID: ' . $result['Car']['id']. '</h3>';
-                }
-            }
-            ?> 
             <div class="cars">
                 <table>
                     <tr>

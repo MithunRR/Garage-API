@@ -134,12 +134,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
                 <h2>User's Cars</h2>
                 <?php 
                 if (isset($car_result["User"])) {
-                    $userR =  $car_result["User"];
-                    echo  " <h3> Owner Id: ". $userR['id'] . "</h3>";
-                    } 
-                    else{
-                        echo  " <h3 style='color:red'> Invalid User Id </h3>";
-                    }
+                    echo "<h3> Owner Id : ". $user_id ."</h3>";
+                }
+                elseif (empty($_POST['user_id'])){
+                    echo "<h3> &#8679; Enter User Id</h3>";
+                }
+                else {
+                    echo "<h3 style='color:red'> Invalid User Id</h3>";
+                }
                 ?>
             </div>
 
